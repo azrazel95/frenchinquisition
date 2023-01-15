@@ -1,0 +1,23 @@
+{
+  "name": "frenchinquisition",
+  "version": "1.0.0",
+  "description": "people do expect the french inquisition",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azrazel95/frenchinquisition.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/azrazel95/frenchinquisition/issues"
+  },
+  "homepage": "https://github.com/azrazel95/frenchinquisition#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
