@@ -63,7 +63,7 @@ inquirer
     var github = answers.github
     var email = answers.email
     var badge = answers.badge
-    fs.writeFile('ReadMe.md',
+    fs.writeFile('./output/README.md',
 `# ${title}\n  
 - [Installation](#installation)\n
 - [Usage](#usage)\n
@@ -90,8 +90,8 @@ ${instructions}\n
 \n
 ## Questions\n
 Contact me!\n
-github: https://github.com/${github}\n
-email: ${email}\n
+Github: https://github.com/${github}\n
+Email: ${email}\n
 `,
       (err)=>
     err ? console.error(err) : console.log('Enjoy your ReadMe!')
