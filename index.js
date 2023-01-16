@@ -1,16 +1,18 @@
-const inquirer = require("./node_modules/inquirer")
+//
+const inquirer = require("./node_modules/inquirer");
+
 const fs = require('fs');
 inquirer
 .prompt([
     {
         type: "input",
         message: "What is the title of your project",
-        name: "Title",
+        name: "title",
     },
     {
         type:"input",
         message: "what would you like the description to be?",
-        name: "description "
+        name: "description"
     },
     {
         type:"input",
@@ -20,7 +22,7 @@ inquirer
     {
         type:"input",
         message: "share some information on how to use your project",
-        name: "info "
+        name: "info"
     },
     {
         type:"input",
@@ -50,9 +52,8 @@ inquirer
         },
 ])
 
-.then ((response) =>
+.then ((answers) =>
 {
-    const answers = JSON.stringify(response);
     var title = answers.title
     var description = answers.description
     var install = answers.install
@@ -63,7 +64,35 @@ inquirer
     var email = answers.email
     var badge = answers.badge
     fs.writeFile('ReadMe.md',
-     `${title}\n`,
+`# ${title}\n  
+- [Installation](#installation)\n
+- [Usage](#usage)\n
+- [Contribution](#contributing)\n
+- [License](#license)\n
+
+## License\n
+![${badge}](https://img.shields.io/github/license/${github}/${title})
+\n
+${description}\n
+\n
+\n
+## Installation\n
+${install}\n
+\n
+## Usage\n
+${info}\n
+\n
+## Contributing\n
+${contribution}\n
+\n
+## Testing\n
+${instructions}\n
+\n
+## Questions\n
+Contact me!\n
+github: https://github.com/${github}\n
+email: ${email}\n
+`,
       (err)=>
     err ? console.error(err) : console.log('Enjoy your ReadMe!')
     )
