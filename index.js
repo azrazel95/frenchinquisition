@@ -1,9 +1,12 @@
-//
+//importing inquirer
 const inquirer = require("./node_modules/inquirer");
-
+//importing filesystem
 const fs = require('fs');
+//inquirerfunction
 inquirer
+//calling the prompt method
 .prompt([
+    //prompts to establish readme information
     {
         type: "input",
         message: "What is the title of your project",
@@ -44,6 +47,7 @@ inquirer
         message: "what is your email adress?",
         name: "email"
     },
+    //the included licenses are the ones i found to be most commonly used, although so far i have only ever used MIT licensing
     {
         type:"list",
         message: "what badge would you like to use?",
@@ -51,7 +55,7 @@ inquirer
         name: "badge"
         },
 ])
-
+//getting the answers to the prompts and splitting them into variables to be used in the markdownfile to be created
 .then ((answers) =>
 {
     var title = answers.title
@@ -63,8 +67,11 @@ inquirer
     var github = answers.github
     var email = answers.email
     var badge = answers.badge
+    //creating the markdown file using filesystem
     fs.writeFile('./output/README.md',
+    //the readme itself, formatted and styled as a markdown file
 `# ${title}\n  
+
 - [Installation](#installation)\n
 - [Usage](#usage)\n
 - [Contribution](#contributing)\n
@@ -93,6 +100,7 @@ Contact me!\n
 Github: https://github.com/${github}\n
 Email: ${email}\n
 `,
+//error catch and console log in case of success
       (err)=>
     err ? console.error(err) : console.log('Enjoy your ReadMe!')
     )
